@@ -1,0 +1,20 @@
+<div mat-dialog-content>
+    <div class="carousel-container">
+        <ngb-carousel>
+            <ng-template ngbSlide *ngFor="let item of slideShow; let i = index">
+                <div *ngIf="item.type === 'image'">
+                    <div class="slide-show-item">
+                        <img  [src]="item.path" alt="item.description">
+                    </div>
+                </div>
+                <div *ngIf="item.type === 'video'">
+                    <div class="slide-show-item">
+                        <video controls>
+                            <source [src]="item.path" type="video/mp4" />
+                        </video>
+                    </div>
+                </div>
+            </ng-template>
+        </ngb-carousel>
+    </div>
+</div>

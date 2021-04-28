@@ -1,5 +1,9 @@
 # UlarAgency
 
+### NOTES
+- Comment out contents of node_modules/bootstrap/scss/_type.scss
+- Comment out contents of node_modules/bootstrap/scss/_reboot.scss
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.4.
 
 ## Development server

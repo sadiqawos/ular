@@ -1,0 +1,105 @@
+.button-group-row {
+    display: flex;
+    flex-direction: row;
+    width: 70%;
+    justify-content: space-between;
+    padding-top: 15px;
+}
+.service-item {
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    height: 200px;
+    margin: 10px;
+    background-color: #ffffff05;
+    border: 1px solid #ffffff26;
+    backdrop-filter: blur(1px);
+    border-radius: 20px 20px;
+    .service-title {
+        display: flex;
+        font-family: 'bely-display';
+        text-transform: capitalize;
+        align-self: center;
+        font-size: 15px;
+        text-align: center;
+        justify-content: center;
+        width: 100%;
+        padding: 0 5px;
+    }
+    .service-phrases {
+        display: flex;
+        text-transform: capitalize;
+        font-size: 12px;
+        text-align: center;
+        padding: 10px;
+        justify-content: center;
+    }
+}
+.w-50 {
+    width: 50%;
+}
+@media screen and (max-width:800px) {
+    .button-group-row {
+        width: 100%;
+        padding-top: 30px;
+        padding-bottom: 30px;
+    }
+    .w-50 {
+        width: 100%;
+    }
+    .service-item {
+        width: 100%;
+        height: auto;
+
+        .service-title {
+            display: flex;
+            font-family: 'bely-display';
+            text-transform: capitalize;
+            align-self: center;
+            font-size: 15px;
+            text-align: center;
+            justify-content: center;
+            width: 100%;
+        }
+        .service-phrases {
+            display: flex;
+            text-transform: capitalize;
+            font-size: 13px;
+            padding: 10px;
+            justify-content: center;
+        }
+    }   
+}
+
+@media screen and (max-width:400px) {
+    .button-group-row {
+        width: 100%;
+        padding-top: 15px;
+        padding-bottom: 15px;
+    }
+    .w-50 {
+        width: 100%;
+    }
+    .service-item {
+        width: 100%;
+        height: auto;
+
+        .service-title {
+            display: flex;
+            font-family: 'bely-display';
+            text-transform: capitalize;
+            align-self: center;
+            font-size: 15px;
+            text-align: center;
+            justify-content: center;
+            width: 100%;
+        }
+        .service-phrases {
+            display: flex;
+            text-transform: capitalize;
+            font-size: 13px;
+            padding: 10px;
+            justify-content: center;
+        }
+    }   
+}

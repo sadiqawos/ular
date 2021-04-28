@@ -1,0 +1,57 @@
+<div class="fullscreen-image-tint" [style.backgroundImage]="'url('+backgroundImageUrl+')'">
+    <app-naviagtor *ngIf="!isMobile"></app-naviagtor>
+    <div class="body-container">
+        <div class="left">
+            <h1>Meet The Team</h1>
+            <p [innerHTML]="body"></p>
+        </div>
+        <div class="right">
+            <div class="contact-form">
+                <h2>Form</h2>
+                <form [formGroup]="FormData" (ngSubmit)="onSubmit(FormData.value)">
+                    <div class="form-group">
+                        <label class="form-label" for="fullname">Name</label>
+                        <input type="text" class="form-control" name="Fullname" placeholder=""
+                            formControlName="Fullname">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="Email">Email</label>
+                        <input type="email" class="form-control" name="Email" aria-describedby="emailHelp"
+                            placeholder="" formControlName="Email">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="comment">Message</label>
+                        <textarea class="form-control" formControlName="Comment" name="Message" rows="7">
+                        </textarea>
+                    </div>
+                    <button style="margin-top: 20px;" type="submit" class="btn btn-primary" [ngClass]="{'inactive-btn': !FormData.valid}" [disabled]="!FormData.valid" >Submit</button>
+                </form>
+            </div>
+            <div *ngIf="isMobile" class="contact-link">
+                <button (click)="onContactLink()">
+                  <i class="fa fa-phone"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<div *ngIf="dataService.lookInside" class="lookinside">
+    <div class="main-container">
+        <h2>It pays to notice the small details</h2>
+        <span>Enter your email below to receive a $5 e-transfer!</span>
+        <form [formGroup]="PromoFormData" (ngSubmit)="onSubmitPromo(PromoFormData.value)">
+            <div class="form-group">
+                <input type="email" class="form-control" name="Email" aria-describedby="emailHelp"
+                    placeholder="Email" formControlName="Email">
+            </div>
+            <div class="form-group">
+                <input type="email" class="form-control" name="EmailConfirm" aria-describedby="emailHelp"
+                    placeholder="Confirm Email" formControlName="EmailConfirm">
+            </div>
+            <button style="margin-top: 20px;" type="submit" class="btn btn-primary" [ngClass]="{'inactive-btn': !PromoFormData.valid}" [disabled]="!PromoFormData.valid" >Submit</button>
+        </form>
+        <div class="footer-date">
+            <span>2021</span>
+        </div>
+    </div>
+</div>

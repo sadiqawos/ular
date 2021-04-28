@@ -1,0 +1,12 @@
+<div class="fullscreen-image" [style.backgroundImage]="'url('+content.backgroundUrl+')'">
+    <app-naviagtor *ngIf="!isMobile"></app-naviagtor>
+    <div class="text-carousel">
+        <div class="outer-wrapper">
+            <p class="words">{{ content.phrases[phraseIndex] }}</p>
+            <div class="indicator-group">
+                <div class="indicator" *ngFor="let item of content.phrases; let i = index" (click)="changeIndex(i)"
+                    [ngClass]="{'activated': i === phraseIndex}"></div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,1 +1,625 @@
-/* You can add global styles to this file, and also import other style files */
+html,
+body {
+    margin: 0;
+    padding: 0;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    // width: 100vw;
+    color: #fff;
+    background-color: #000;
+    font-size: 18px;
+    font-family: "sf-pro-display", sans-serif;
+}
+
+input:focus {
+    outline: none;
+}
+
+button:focus {
+    outline: none;
+}
+
+textarea:focus {
+    outline: none;
+}
+
+button {
+    background-color: #3773b561;
+    height: 40px;
+    border-radius: 10px;
+    color: white;
+    font-weight: bold;
+    border-style: none;
+    cursor: pointer;
+    margin: 0 10px;
+}
+
+.active-button {
+    background-color: #fab040;
+}
+
+.body-container {
+    display: flex;
+    flex-direction: row;
+    align-self: flex-end;
+    z-index: 1;
+    width: 100%;
+    justify-content: center;
+    height: 100%;
+    align-items: center;
+
+    .left {
+        display: flex;
+        flex-direction: column;
+        width: 50%;
+        max-width: 600px;
+        margin: 0 20px;
+    }
+
+    .right {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        width: 50%;
+        max-width: 600px;
+        margin: 0 20px;
+    }
+
+    h1 {
+        font-family: 'bely-display';
+        text-transform: capitalize;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 50px;
+        margin-block-start: 0;
+        margin-block-end: 0;
+    }
+}
+
+.fullscreen-image {
+    display: flex;
+    background: no-repeat center center fixed;
+    align-items: center;
+    justify-content: center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    width: 100%;
+    height: 100vh;
+}
+
+.fullscreen-image-tint {
+    display: flex;
+    background: no-repeat center center fixed;
+    align-items: center;
+    justify-content: center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    width: 100%;
+    height: 100vh;
+
+    &:before {
+        content: "";
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: rgba(5, 26, 68, 0.6);
+    }
+}
+
+@media screen and (max-width:800px) {
+    .fullscreen-image-tint {
+        height: auto;
+
+        &:before {
+            z-index: 1;
+            height: 100%;
+            width: 100%;
+            position: fixed;
+            overflow: auto;
+            top: 0px;
+            left: 0px;
+            background: rgba(5, 26, 68, 0.6);
+        }
+    }
+
+    .body-container {
+        display: flex;
+        flex-direction: column;
+        z-index: 1;
+        width: 100%;
+        height: 100%;
+        justify-content: normal;
+        align-items: normal;
+        padding-top: 100px;
+        padding-bottom: 150px;
+
+
+        .left {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            padding: 0 35px;
+            margin: 0;
+        }
+
+        .right {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            width: 100%;
+            padding: 0 35px;
+            margin: 0;
+        }
+
+        h1 {
+            font-family: 'bely-display';
+            text-transform: capitalize;
+            font-style: normal;
+            font-weight: 600;
+            font-size: 30px;
+            margin-block-start: 0;
+            margin-block-end: 0;
+        }
+        p {
+            font-size: 13px;
+        }
+    }
+}
+
+@media screen and (max-width:400px) {
+    .fullscreen-image-tint {
+        height: auto;
+
+        &:before {
+            z-index: 1;
+            height: 100%;
+            width: 100%;
+            position: fixed;
+            overflow: auto;
+            top: 0px;
+            left: 0px;
+            background: rgba(5, 26, 68, 0.6);
+        }
+    }
+
+    .body-container {
+        display: flex;
+        flex-direction: column;
+        z-index: 1;
+        width: 100%;
+        height: 100%;
+        justify-content: normal;
+        align-items: normal;
+        padding-top: 100px;
+        padding-bottom: 150px;
+
+
+        .left {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            padding: 0 35px;
+        }
+
+        .right {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            width: 100%;
+            padding: 0 35px;
+        }
+
+        h1 {
+            font-family: 'bely-display';
+            text-transform: capitalize;
+            font-style: normal;
+            font-weight: 600;
+            font-size: 30px;
+            margin-block-start: 0;
+            margin-block-end: 0;
+        }
+        p {
+            font-size: 13px;
+        }
+    }
+}
+
+@font-face {
+    font-family: "bely-display";
+    src: local("bely-display"), url(./assets/fonts/belly-display/Bely-Display-W00-Regular.otf) format("truetype");
+}
+
+@font-face {
+    font-family: "monaco";
+    src: local("monaco"), url(./assets/fonts/monaco.ttf) format("truetype");
+}
+
+@font-face {
+    font-family: "sf-pro-display";
+    src: local("sf-pro-display"), url(./assets/fonts/sf-pro-display/SF-Pro-Display-Regular.otf) format("truetype");
+}
+
+@font-face {
+    font-family: "sf-pro-display";
+    src: local("sf-pro-display"), url(./assets/fonts/sf-pro-display/SF-Pro-Display-Bold.otf) format("truetype");
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: "sf-pro-display";
+    src: local("sf-pro-display"), url(./assets/fonts/sf-pro-display/SF-Pro-Display-RegularItalic.otf) format("truetype");
+    font-style: italic;
+}
+
+.mat-progress-bar-buffer {
+    background-color: #fff0;
+    border: solid 1px #ffffff69;
+    border-radius: 5px;
+}
+.mat-progress-bar-background {
+    visibility: hidden;
+}
+.mat-progress-bar-fill::after {
+    background-color: #174e8b94;
+    border-radius: 5px;
+}
+.carousel-light-box-modal {
+    mat-dialog-container {
+        padding: 0;
+    }
+    .mat-dialog-content {
+        max-height: none !important;
+        margin: 0;
+        padding: 0;
+    }
+    .carousel-container {
+        display: flex;
+        .slide-show-item {
+                display: flex;
+                img {
+                    width: 100%;
+                    height: 100% !important;
+                }
+                video {
+                    width: 100%;
+                    height: 100% !important;
+                }
+            }
+    }
+}
+.carousel-control-next-icon, .carousel-control-prev-icon {
+    background-color: #6d6b6b;
+}
+
+// This is used to style the html template `phone-number-modal.html `
+.phone-number-modal {
+    mat-dialog-container {
+        border-radius: 10px;
+        background-color: #ffffffb3;
+        -webkit-backdrop-filter: blur(5px);
+        backdrop-filter: blur(5px);
+        padding: 50px 60px;
+    }
+    .lookinside {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        color: #5c5a5a;
+        align-items: center;
+        justify-content: center;
+
+        .main-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .close-btn-container {
+            display: flex;
+            width: 100%;
+            justify-content: flex-end;
+            .close-btn {
+                padding: 10px;
+                background: none;
+                color: #174e8b;
+                cursor: pointer;
+            }
+        }
+        h2 {
+            font-family: 'bely-display';
+            font-weight: 600;
+            font-size: 35px;
+            color: #174e8b;
+            margin-block-end: 0.5em;
+        }
+    
+        span {
+            font-size: 15px;
+        }
+    
+        .footer-date {
+            color: #174e8b;
+            display: flex;
+            flex-direction: column;
+            bottom: 0;
+            position: fixed;
+        }
+    
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+    
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            width: 359px;
+            margin: 0.5em;
+    
+            input {
+                color: #817e7e;
+                background-color: #ffff;
+                height: 40px;
+                width: 100%;
+                padding: 15px;
+            }
+        }
+    
+        .form-label {
+            padding: 0 0 5px 5px;
+        }
+    
+        .form-control {
+            background-color: #0000000a;
+            border-radius: 10px;
+            border: 0;
+        }
+    
+        button {
+            text-transform: uppercase;
+            height: 24px;
+            border-radius: 10px;
+            font-weight: bold;
+            border-style: none;
+            background-color: #fab040;
+            color: #ffff;
+            width: 15em;
+            height: 3em;
+        }
+    
+        .inactive-btn {
+            background-color: #b6b6b6;
+        }
+    }
+}
+
+@media screen and (max-width:800px) {
+    .carousel-light-box-modal {
+        .carousel-container {
+            max-width: none !important;
+            .slide-show-item {
+                display: flex;
+                img {
+                    width: 100%;
+                    height: 100% !important;
+                }
+                video {
+                    width: 100%;
+                    height: 100% !important;
+                }
+            }
+        }
+    }
+    .phone-number-modal {
+        mat-dialog-container {
+            padding: 20px;
+        }
+        .lookinside {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            color: #5c5a5a;
+            align-items: center;
+            justify-content: center;
+    
+            .close-btn-container {
+                display: flex;
+                width: 100%;
+                justify-content: flex-end;
+                .close-btn {
+                    padding: 10px;
+                    background: none;
+                    color: #174e8b;
+                    cursor: pointer;
+                }
+            }
+            h2 {
+                font-size: 30px;
+            }
+        
+            span {
+                font-size: 15px;
+            }
+        
+            .footer-date {
+                color: #174e8b;
+                display: flex;
+                flex-direction: column;
+                bottom: 0;
+                position: fixed;
+            }
+        
+            form {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+        
+            .form-group {
+                display: flex;
+                flex-direction: column;
+                width: auto;
+                margin: 0.5em;
+        
+                input {
+                    color: #817e7e;
+                    background-color: #ffff;
+                    height: 40px;
+                    width: auto;
+                    padding: 15px;
+                }
+            }
+        
+            .form-label {
+                padding: 0 0 5px 5px;
+            }
+        
+            .form-control {
+                background-color: #0000000a;
+                border-radius: 10px;
+                border: 0;
+            }
+        
+            button {
+                text-transform: uppercase;
+                height: 24px;
+                border-radius: 10px;
+                font-weight: bold;
+                border-style: none;
+                background-color: #fab040;
+                color: #ffff;
+                width: 15em;
+                height: 3em;
+            }
+        
+            .inactive-btn {
+                background-color: #b6b6b6;
+            }
+        }
+    }
+}
+
+@media screen and (max-width:400px) {
+    .carousel-light-box-modal {
+        .carousel-container {
+            max-width: none !important;
+            .slide-show-item {
+                display: flex;
+                img {
+                    width: 100%;
+                    height: 100% !important;
+                }
+                video {
+                    width: 100%;
+                    height: 100% !important;
+                }
+            }
+        }
+    }
+    .phone-number-modal {
+        mat-dialog-container {
+            padding: 20px;
+        }
+        .lookinside {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            color: #5c5a5a;
+            align-items: center;
+            justify-content: center;
+    
+            .main-container {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
+            .close-btn-container {
+                display: flex;
+                width: 100%;
+                justify-content: flex-end;
+                .close-btn {
+                    padding: 10px;
+                    background: none;
+                    color: #174e8b;
+                    cursor: pointer;
+                }
+            }
+            h2 {
+                font-size: 30px;
+            }
+            span {
+                font-size: 15px;
+            }
+            .footer-date {
+                color: #174e8b;
+                display: flex;
+                flex-direction: column;
+                bottom: 0;
+                position: fixed;
+            }
+        
+            form {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+        
+            .form-group {
+                display: flex;
+                flex-direction: column;
+                width: auto;
+                margin: 0.5em;
+        
+                input {
+                    color: #817e7e;
+                    background-color: #ffff;
+                    height: 40px;
+                    width: auto;
+                    padding: 15px;
+                }
+            }
+        
+            .form-label {
+                padding: 0 0 5px 5px;
+            }
+        
+            .form-control {
+                background-color: #0000000a;
+                border-radius: 10px;
+                border: 0;
+            }
+        
+            button {
+                text-transform: uppercase;
+                height: 24px;
+                border-radius: 10px;
+                font-weight: bold;
+                border-style: none;
+                background-color: #fab040;
+                color: #ffff;
+                width: 15em;
+                height: 3em;
+            }
+        
+            .inactive-btn {
+                background-color: #b6b6b6;
+            }
+        }
+    }
+}
+

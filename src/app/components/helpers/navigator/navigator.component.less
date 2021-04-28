@@ -1,0 +1,133 @@
+:host {
+    z-index: 1;
+}
+nav {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    bottom: 50%;
+
+    div {
+        margin-left: 3em;
+        margin-right: 2em;
+
+        li {
+            list-style-type: none;
+            margin: 0;
+            padding: 10px;
+            width: 100%;
+            white-space: nowrap;
+
+            a {
+                all: unset;
+                text-transform: uppercase;
+                font-weight: 600;
+                color: #d8d2d2;
+
+                &:hover {
+                    cursor: pointer;
+                }
+            }
+
+            .is-selected {
+                color: #ffff;
+                padding: 0 10px;
+                border-left: 3px solid #faae42;
+                margin-left: -10px;
+            }
+        }
+    }
+}
+
+@media screen and (max-width:800px) {
+    nav {
+        display: flex;
+        width: 100%;
+        background-color: #ffffff;
+        z-index: 99999999;
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        text-align: center;
+    
+        div {
+            display: flex;
+            flex-direction: row;
+            margin: 0;
+            align-items: center;
+            font-size: 14px;
+            height: 50px;
+            li {
+                list-style-type: none;
+                margin: 0;
+                padding: 0px;
+                white-space: normal;
+
+                a {
+                    all: unset;
+                    text-transform: uppercase;
+                    font-weight: 600;
+                    color: #bdbdbd;
+    
+                    &:hover {
+                        cursor: pointer;
+                    }
+                }
+    
+                .is-selected {
+                    color: #faae42;
+                    margin-left: 0;
+                    padding: 0;
+                    border-left: none !important;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width:400px) {
+    nav {
+        display: flex;
+        width: 100%;
+        background-color: #ffffff;
+        z-index: 99999999;
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        text-align: center;
+    
+        div {
+            display: flex;
+            flex-direction: row;
+            margin: 0;
+            align-items: center;
+            font-size: 14px;
+            height: 50px;
+            li {
+                list-style-type: none;
+                margin: 0;
+                padding: 0px;
+
+                a {
+                    all: unset;
+                    text-transform: uppercase;
+                    font-weight: 600;
+                    color: #bdbdbd;
+    
+                    &:hover {
+                        cursor: pointer;
+                    }
+                }
+    
+                .is-selected {
+                    color: #faae42;
+                    margin-left: 0;
+                    padding: 0;
+                    border-left: none !important;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,49 @@
+<div class="fullscreen-image auto-hight" [style.backgroundImage]="'url('+backgroundImageUrl+')'">
+    <app-naviagtor *ngIf="!isMobile"></app-naviagtor>
+    <div class="body-container">
+        <div class="left">
+            <h1>Case Studies</h1>
+            <p>{{body}}</p>
+            <div class="logos">
+                <div class="logo-container" *ngFor="let case of caseStudies; let i = index">
+                    <img (click)="selectedIndex = i" class="logo" [src]="case.logoUrl">
+                </div>
+            </div>
+        </div>
+        <div class="right">
+            <h2>{{caseStudies[selectedIndex].title}}</h2>
+            <span>Date: {{caseStudies[selectedIndex].date}}</span>
+            <span>Scope: {{caseStudies[selectedIndex].scope}}</span>
+            <div class="btn-row">
+                <button [ngClass]="{'button-active': selectedObject === 'challenges'}"
+                    (click)="selectedObject = 'challenges'">Challenges</button>
+                <button [ngClass]="{'button-active': selectedObject === 'solutions'}"
+                    (click)="selectedObject = 'solutions'">Solutions</button>
+                <button [ngClass]="{'button-active': selectedObject === 'results'}"
+                    (click)="selectedObject = 'results'">Results</button>
+            </div>
+            <ul *ngIf="caseStudies[selectedIndex][selectedObject]" class="description">
+                <li *ngFor="let item of caseStudies[selectedIndex][selectedObject]">{{item}}</li>
+            </ul>
+            <div class="carousel-container">
+                <ngb-carousel *ngIf="caseStudies[selectedIndex].slideShow">
+                    <ng-template ngbSlide *ngFor="let item of caseStudies[selectedIndex].slideShow; let i = index">
+                        <div *ngIf="item.type === 'image'">
+                            <div class="slide-show-item">
+                                <img (click)="openLightBox(caseStudies[selectedIndex].slideShow, i)" [src]="item.path"
+                                    alt="item.description">
+                            </div>
+                        </div>
+                        <div *ngIf="item.type === 'video'">
+                            <div class="slide-show-item">
+                                <video controls>
+                                    <source [src]="item.path" type="video/mp4" />
+                                </video>
+                            </div>
+                        </div>
+                    </ng-template>
+                </ngb-carousel>
+            </div>
+        </div>
+    </div>
+</div>

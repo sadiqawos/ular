@@ -1,0 +1,26 @@
+<div class="fullscreen-image-tint" [style.backgroundImage]="'url('+backgroundImageUrl+')'">
+    <app-naviagtor *ngIf="!isMobile"></app-naviagtor>
+    <div class="body-container">
+        <div class="left">
+            <h1>Services</h1>
+            <p [innerHTML]="bodyText"></p>
+            <div class="w-50">
+                <hr>
+            </div>
+            <div class="button-group-row">
+                <button [ngClass]="{'active-button': selectedService == socialMediaServices}" (click)="selectedService = socialMediaServices">Social Media Management</button>
+                <button [ngClass]="{'active-button': selectedService == websiteDesignServices}" (click)="selectedService = websiteDesignServices">Custom Website Design</button>
+            </div>
+        </div>
+        <div class="right">
+            <div class="service-item" *ngFor="let service of selectedService">
+                <div class="service-title">
+                    <h4>{{ service.title }}</h4>
+                </div>
+                <div class="service-phrases" *ngFor="let phrase of service.phrases">
+                    <span>{{ phrase }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
