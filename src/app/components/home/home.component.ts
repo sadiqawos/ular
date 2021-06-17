@@ -23,9 +23,9 @@ export class HomeComponent implements OnInit {
       this.isMobile = true;
     }
     this.beginTimeout();
-    // this.dataService.fetchHomePageContent().then((content: HomeContent) => {
-    //   this.content = content;
-    // });
+    this.dataService.fetchHomePageContent().then((content: HomeContent) => {
+      this.content = content;
+    });
   }
   
   beginTimeout(): void {    

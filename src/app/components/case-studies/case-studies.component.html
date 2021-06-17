@@ -1,48 +1,60 @@
-<div class="fullscreen-image auto-hight" [style.backgroundImage]="'url('+backgroundImageUrl+')'">
+<div class="fullscreen-image auto-hight" [style.background]="'url('+content.backgroundImageUrl+')'">
     <app-naviagtor *ngIf="!isMobile"></app-naviagtor>
     <div class="body-container">
         <div class="left">
             <h1>Case Studies</h1>
-            <p>{{body}}</p>
+            <p>{{content.body}}</p>
             <div class="logos">
-                <div class="logo-container" *ngFor="let case of caseStudies; let i = index">
-                    <img (click)="selectedIndex = i" class="logo" [src]="case.logoUrl">
+                <div class="logo-container" *ngFor="let case of content.caseStudies; let i = index">
+                    <div *ngIf="content.selectedIndex === i" (click)="content.selectedIndex = i" class="logo" [style.backgroundImage]="'url('+case.logoUrl+')'"></div>
+                    <div *ngIf="content.selectedIndex !== i" (click)="content.selectedIndex = i" class="logo" [style.backgroundImage]="'url('+case.altLogoUrl+')'"></div>
                 </div>
             </div>
         </div>
-        <div class="right">
-            <h2>{{caseStudies[selectedIndex].title}}</h2>
-            <span>Date: {{caseStudies[selectedIndex].date}}</span>
-            <span>Scope: {{caseStudies[selectedIndex].scope}}</span>
+        <div class="right" *ngIf="content.caseStudies[content.selectedIndex]">
+            <h2>{{content.caseStudies[content.selectedIndex].title}}</h2>
+            <span>Date: {{content.caseStudies[content.selectedIndex].date}}</span>
+            <span>Scope: {{content.caseStudies[content.selectedIndex].scope}}</span>
             <div class="btn-row">
-                <button [ngClass]="{'button-active': selectedObject === 'challenges'}"
-                    (click)="selectedObject = 'challenges'">Challenges</button>
-                <button [ngClass]="{'button-active': selectedObject === 'solutions'}"
-                    (click)="selectedObject = 'solutions'">Solutions</button>
-                <button [ngClass]="{'button-active': selectedObject === 'results'}"
-                    (click)="selectedObject = 'results'">Results</button>
+                <button [ngClass]="{'button-active': content.selectedObject === 'challenges'}"
+                    (click)="content.selectedObject = 'challenges'">Challenges</button>
+                <button [ngClass]="{'button-active': content.selectedObject === 'solutions'}"
+                    (click)="content.selectedObject = 'solutions'">Solutions</button>
+                <button [ngClass]="{'button-active': content.selectedObject === 'results'}"
+                    (click)="content.selectedObject = 'results'">Results</button>
             </div>
-            <ul *ngIf="caseStudies[selectedIndex][selectedObject]" class="description">
-                <li *ngFor="let item of caseStudies[selectedIndex][selectedObject]">{{item}}</li>
+            <ul *ngIf="content.caseStudies[content.selectedIndex][content.selectedObject]" class="description">
+                <li *ngFor="let item of content.caseStudies[content.selectedIndex][content.selectedObject]">{{item}}</li>
             </ul>
-            <div class="carousel-container">
-                <ngb-carousel *ngIf="caseStudies[selectedIndex].slideShow">
-                    <ng-template ngbSlide *ngFor="let item of caseStudies[selectedIndex].slideShow; let i = index">
+            <div class="carousel-container"
+                *ngIf="content.caseStudies[content.selectedIndex].slideShow && content.caseStudies[content.selectedIndex].slideShow.length > 0">
+                <div *ngIf="!isMobile">
+                    <button class="navigation-arrow" (click)="prev()">
+                        <i class="fa fa-angle-left" aria-hidden="true"></i>
+                    </button>
+                </div>
+                <ngb-carousel #carousel (slid)="onSlid($event)">
+                    <ng-template ngbSlide *ngFor="let item of content.caseStudies[content.selectedIndex].slideShow; let i = index">
                         <div *ngIf="item.type === 'image'">
                             <div class="slide-show-item">
-                                <img (click)="openLightBox(caseStudies[selectedIndex].slideShow, i)" [src]="item.path"
+                                <img (click)="openLightBox(content.caseStudies[content.selectedIndex].slideShow, i)" [src]="item.path"
                                     alt="item.description">
                             </div>
                         </div>
                         <div *ngIf="item.type === 'video'">
                             <div class="slide-show-item">
-                                <video controls>
+                                <video #video controls>
                                     <source [src]="item.path" type="video/mp4" />
                                 </video>
                             </div>
                         </div>
                     </ng-template>
                 </ngb-carousel>
+                <div *ngIf="!isMobile">
+                    <button class="navigation-arrow" (click)="next()">
+                        <i class="fa fa-angle-right"></i>
+                    </button>
+                </div>
             </div>
         </div>
     </div>

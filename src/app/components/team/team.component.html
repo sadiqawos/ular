@@ -1,42 +1,76 @@
-<div class="fullscreen-image-tint" [style.backgroundImage]="'url('+backgroundImageUrl+')'">
+<div class="fullscreen-image-tint" [style.backgroundImage]="'url('+content.backgroundImageUrl+')'">
     <app-naviagtor *ngIf="!isMobile"></app-naviagtor>
     <div class="body-container">
         <div class="left">
             <h1>Meet The Team</h1>
-            <p>{{body}}</p>
+            <p>{{content.body}}</p>
             <div class="avatars">
                 <div class="column">
-                    <div class="avatar-container" (click)="selectedMemberIndex = 0"><div [ngClass]="{'selected': selectedMemberIndex === 0}" class="avatar" [style.backgroundImage]="'url('+members[0].avatarUrl+')'"></div></div>
-                    <div class="avatar-container" (click)="selectedMemberIndex = 1"><div [ngClass]="{'selected': selectedMemberIndex === 1}" class="avatar" [style.backgroundImage]="'url('+members[1].avatarUrl+')'"></div></div>
+                    <div class="avatar-container" (click)="content.selectedMemberIndex = 0; content.selectedStatIndex = 0">
+                        <div
+                            [ngClass]="{'selected': content.selectedMemberIndex === 0}"
+                            class="avatar"
+                            [style.backgroundImage]="'url('+content.members[0].avatarUrl+')'"></div>
+                    </div>
+                    <div class="avatar-container" (click)="content.selectedMemberIndex = 1; content.selectedStatIndex = 0">
+                        <div
+                            [ngClass]="{'selected': content.selectedMemberIndex === 1}"
+                            class="avatar"
+                            [style.backgroundImage]="'url('+content.members[1].avatarUrl+')'"></div>
+                    </div>
                 </div>
                 <div class="column">
-                    <div class="avatar-container" (click)="selectedMemberIndex = 2"><div [ngClass]="{'selected': selectedMemberIndex === 2}" class="avatar" [style.backgroundImage]="'url('+members[2].avatarUrl+')'"></div></div>
+                    <div class="avatar-container" (click)="content.selectedMemberIndex = 2; content.selectedStatIndex = 0">
+                        <div
+                            [ngClass]="{'selected': content.selectedMemberIndex === 2}"
+                            class="avatar"
+                            [style.backgroundImage]="'url('+content.members[2].avatarUrl+')'">
+                        </div>
+                    </div>
                 </div>
                 <div class="column">
-                    <div class="avatar-container" (click)="selectedMemberIndex = 3"><div [ngClass]="{'selected': selectedMemberIndex === 3}" class="avatar" [style.backgroundImage]="'url('+members[3].avatarUrl+')'"></div></div>
-                    <div class="avatar-container" (click)="selectedMemberIndex = 4"><div [ngClass]="{'selected': selectedMemberIndex === 4}" class="avatar" [style.backgroundImage]="'url('+members[4].avatarUrl+')'"></div></div>
+                    <div class="avatar-container" (click)="content.selectedMemberIndex = 3; content.selectedStatIndex = 0">
+                        <div
+                            [ngClass]="{'selected': content.selectedMemberIndex === 3}"
+                            class="avatar"
+                            [style.backgroundImage]="'url('+content.members[3].avatarUrl+')'">
+
+                        </div>
+                    </div>
+                    <div class="avatar-container" (click)="content.selectedMemberIndex = 4; content.selectedStatIndex = 0">
+                        <div
+                            [ngClass]="{'selected': content.selectedMemberIndex === 4}"
+                            class="avatar"
+                            [style.backgroundImage]="'url('+content.members[4].avatarUrl+')'">
+
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
         <div class="right">
             <div class="avatar-card-outer">
-                <div class="avatar-card" [style.backgroundImage]="'url('+members[selectedMemberIndex].imageUrl+')'">
+                <div class="avatar-card" [style.backgroundImage]="'url('+content.members[content.selectedMemberIndex].images[content.selectedStatIndex]+')'">
                     <div class="avatar-card-button-control">
-                        <button (click)="selectedStatIndex = 0" [ngClass]="{'button-active': selectedStatIndex === 0}">{{members[selectedMemberIndex].stats[0].name}}</button>
-                        <button (click)="selectedStatIndex = 1" [ngClass]="{'button-active': selectedStatIndex === 1}">{{members[selectedMemberIndex].stats[1].name}}</button>
-                        <button (click)="selectedStatIndex = 2" [ngClass]="{'button-active': selectedStatIndex === 2}">{{members[selectedMemberIndex].stats[2].name}}</button>
+                        <button (click)="content.selectedStatIndex = 0" [ngClass]="{'button-active': content.selectedStatIndex === 0}">{{content.members[content.selectedMemberIndex].stats[0].name}}</button>
+                        <button (click)="content.selectedStatIndex = 1" [ngClass]="{'button-active': content.selectedStatIndex === 1}">{{content.members[content.selectedMemberIndex].stats[1].name}}</button>
+                        <button (click)="content.selectedStatIndex = 2" [ngClass]="{'button-active': content.selectedStatIndex === 2}">{{content.members[content.selectedMemberIndex].stats[2].name}}</button>
                     </div>
                     <div class="avatar-card-stats">
-                        <div class="avatar-card-stats--inner" *ngFor="let stat of members[selectedMemberIndex].stats[selectedStatIndex].items">
+                        <div class="avatar-card-stats--inner" *ngFor="let stat of content.members[content.selectedMemberIndex].stats[content.selectedStatIndex].items">
                             <div class="avatar-card-stats--left">{{stat.key}}</div>
                             <div class="avatar-card-stats--right">
-                                <mat-progress-bar *ngIf="!stat.type" mode="determinate" value="{{stat.value}}"></mat-progress-bar>
-                                <span *ngIf="stat.type === 'text'">{{stat.value}}</span>
+                                <span class="progress-inside" *ngIf="!stat.type" [style.width.%]="stat.value">
+                                    <span>{{stat.value}}</span>
+                                </span>
+                                <span class="progress-inside" *ngIf="stat.type" [style.width.%]="100">
+                                    <span>{{stat.value}}</span>
+                                </span>
                             </div>
                         </div>
                         <div class="avatar-card-footer">
-                            <h3>{{members[selectedMemberIndex].name}}</h3>
-                            <span>{{members[selectedMemberIndex].role}}</span>
+                            <h3>{{content.members[content.selectedMemberIndex].name}}</h3>
+                            <span>{{content.members[content.selectedMemberIndex].role}}</span>
                         </div>
                     </div>
                 </div>

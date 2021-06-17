@@ -1,9 +1,9 @@
-<div class="fullscreen-image-tint" [style.backgroundImage]="'url('+backgroundImageUrl+')'">
+<div class="fullscreen-image-tint" [style.backgroundImage]="'url('+content.backgroundImageUrl+')'">
     <app-naviagtor *ngIf="!isMobile"></app-naviagtor>
     <div class="body-container">
         <div class="left">
             <h1>Meet The Team</h1>
-            <p [innerHTML]="body"></p>
+            <p [innerHTML]="content.body"></p>
         </div>
         <div class="right">
             <div class="contact-form">
@@ -29,7 +29,7 @@
             </div>
             <div *ngIf="isMobile" class="contact-link">
                 <button (click)="onContactLink()">
-                  <i class="fa fa-phone"></i>
+                  <i class="fa fa-phone" aria-hidden="true"></i>
                 </button>
             </div>
         </div>

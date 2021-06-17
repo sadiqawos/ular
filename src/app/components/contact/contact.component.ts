@@ -3,7 +3,7 @@ import { FormBuilder, FormControl, FormGroup, ValidatorFn, Validators } from '@a
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import axios from 'axios';
 import { Title } from '@angular/platform-browser';
-import { DataService } from 'src/app/services/data.service';
+import { ContactContent, DataService } from 'src/app/services/data.service';
 import { PhoneNumberModal } from '../main/app.component';
 
 @Component({
@@ -12,13 +12,7 @@ import { PhoneNumberModal } from '../main/app.component';
   styleUrls: ['./contact.component.less']
 })
 export class ContactComponent implements OnInit {
-  backgroundImageUrl = '/assets/contact-hero.jpg';
-  body: string = `
-    Let’s talk growth :)<br/><br/>
-    Just a quick heads-up first... if you’re happy with your current social media and website then we won’t be a good fit. If however, you’re looking to improve your online presence, we can help.<br/><br/> 
-    Book a 30-minute meeting here to grow your business-no strings attached.<br/><br/>
-    Worst-case scenario, you walk away with fresh ideas you can instantly implement to grow your business. 
-  `;
+  content: ContactContent = new ContactContent;
   FormData: FormGroup;
   PromoFormData: FormGroup;
 
@@ -28,7 +22,7 @@ export class ContactComponent implements OnInit {
   phoneModalOpen = false;
 
   constructor(dataService: DataService, private builder: FormBuilder, public dialog: MatDialog, private titleService: Title) {
-    this.titleService.setTitle('Ular - Contact');
+    this.titleService.setTitle('Ular - Contact Us');
     this.dataService = dataService;
   }
 

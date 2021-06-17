@@ -3,6 +3,10 @@
 ### NOTES
 - Comment out contents of node_modules/bootstrap/scss/_type.scss
 - Comment out contents of node_modules/bootstrap/scss/_reboot.scss
+- Edit node_modules/bootstrap/scss/_carousel.scss
+    comment out 
+        .carousel-indicators {
+        // position: absolute;
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.4.
 

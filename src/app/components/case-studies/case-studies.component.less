@@ -13,8 +13,15 @@
     }
 
     .logo {
-        width: auto;
+        width: 100px;
         height: 80px;
+        display: flex;
+        background-repeat: no-repeat;
+
+        background-size: contain;
+        -webkit-background-size: contain;
+        -moz-background-size: contain;
+        -o-background-size: contain;
     }
 }
 
@@ -35,6 +42,8 @@
     min-height: 650px;
     font-family: 'monaco';
     font-size: 12px;
+    min-height: 660px;
+    margin-left: 60px;
 
     h2 {
         font-size: 32px;
@@ -56,10 +65,24 @@
     }
     .carousel-container {
         display: flex;
+        align-items: center;
         padding-top: 30px;
+
+        .navigation-arrow {
+            display: flex;
+            height: 40px;
+            width: 40px;
+            border-radius: 50%;
+            min-width: 0;
+            margin: 20px;
+            align-items: center;
+            font-size: 40px;
+            justify-content: center;
+        }
 
         .slide-show-item {
             display: flex;
+            cursor: pointer;
             img {
                 height: 300px;
             }

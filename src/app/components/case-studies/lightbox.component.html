@@ -1,6 +1,6 @@
 <div mat-dialog-content>
     <div class="carousel-container">
-        <ngb-carousel>
+        <ngb-carousel #carousel>
             <ng-template ngbSlide *ngFor="let item of slideShow; let i = index">
                 <div *ngIf="item.type === 'image'">
                     <div class="slide-show-item">
@@ -9,7 +9,7 @@
                 </div>
                 <div *ngIf="item.type === 'video'">
                     <div class="slide-show-item">
-                        <video controls>
+                        <video #video controls>
                             <source [src]="item.path" type="video/mp4" />
                         </video>
                     </div>

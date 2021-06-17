@@ -37,7 +37,7 @@
 
 .mat-progress-bar {
     border-radius: 5px;
-    height: 10px;
+    height: 20px;
 }
 
 .avatar-card-outer {
@@ -48,9 +48,8 @@
     .avatar-card {
         display: flex;
         flex-direction: column;
-        width: 300px;
-        height: 400px;
-
+        width: 330px;
+        height: 510px;
         background-position: center center;
         align-items: center;
         -webkit-background-size: cover;
@@ -125,11 +124,32 @@
 
                 .avatar-card-stats--right {
                     display: flex;
-                    justify-content: flex-end;
                     width: 40%;
-                    padding-right: 10px;
-                    padding-left: 5px;
-                    text-align: end;
+                    align-content: center;
+                    align-items: center;
+                    border-radius: 10px;
+                    background-color: #ffffff0f;
+                    border: 1px solid #ffffff2e;
+                    min-height: 14px;
+                    
+                    .progress-inside {
+                        display: flex;
+                        background-color: #174e8b94;
+                        border-radius: 10px;
+                        min-width: 20%;
+                        height: 100%;
+                        justify-content: flex-end;
+                        align-items: center;
+                        ::before {
+                            content: "";
+                        }
+                        span {
+                            color: #fff;
+                            padding-right: 6px;
+                            padding-left: 6px;
+                            font-size: 11px;
+                        }
+                    }
                 }
             }
         }
@@ -147,16 +167,13 @@
             span {
                 font-weight: 600;
                 color: #fab040;
+                padding-bottom: 20px;
             }
         }
     }
 }
 
 @media screen and (max-width:800px) {
-    // .body-container {
-    //     height: 100vh;
-    //     padding-bottom: 0;
-    // }
     .avatars {
         display: flex;
         max-width: 100%;
@@ -205,7 +222,7 @@
             display: flex;
             flex-direction: column;
             width: 90%;
-            min-height: 400px;
+            height: 428px;
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -218,10 +235,9 @@
                 display: flex;
                 flex-direction: row;
                 width: 90%;
-                align-items: center;
+                align-items: flex-start;
                 justify-content: space-around;
                 margin: 20px;
-                // height: auto;
                 padding-top: 0;
     
                 button {
@@ -265,6 +281,9 @@
                         width: 40%;
                     }
                 }
+            }
+            .avatar-card-footer {
+                padding-bottom: 20px;
             }
         }
     }
@@ -323,7 +342,7 @@
             display: flex;
             flex-direction: column;
             width: 300px;
-            height: 400px;
+            height: 428px;
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -336,10 +355,9 @@
                 display: flex;
                 flex-direction: row;
                 width: 90%;
-                align-items: center;
+                align-items: flex-start;
                 justify-content: space-around;
                 margin: 20px;
-                // height: auto;
                 padding-top: 0;
     
                 button {
@@ -383,6 +401,9 @@
                         width: 40%;
                     }
                 }
+            }
+            .avatar-card-footer {
+                padding-bottom: 20px;
             }
         }
     }
